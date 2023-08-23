@@ -1,9 +1,9 @@
 # Task Managment / Issue tracker
 ## Must-Have
 - [ ] Plane water
-    - [ ] Create renderer
     - [ ] Create simple logging functions
     - [ ] Create 3D math functions
+    - [ ] Create renderer/Render a test triangle
 - [ ] Player boat moving/shooting
     - [ ] Load models
     - [ ] Process input
@@ -29,11 +29,13 @@
 - [ ] Add "life" NPCs such as people on islands, fishes, etc (Animations)
 - [ ] Maps to see where the prices are best
 - [ ] HUD with cool UI
+- [ ] Models with textures (not only materials)
 
 ## Won't-Have (this time)
 - [ ] Realistic water physics
 - [ ] Random events that affect environment and economy (tornados, etc)
 - [ ] Story and dialogs
 - [ ] Sound effects and music
+- [ ] Improve boat, skills or any other.
 
 ## Unproritized
