@@ -1,11 +1,22 @@
 # Task Managment / Issue tracker
 ## Must-Have
 - [ ] Plane water
+    - [ ] Create renderer
+    - [ ] Create simple logging functions
+    - [ ] Create 3D math functions
 - [ ] Player boat moving/shooting
-- [ ] Collision detection
+    - [ ] Load models
+    - [ ] Process input
+    - [ ] Collision detection
+    - [ ] Simple physics 
 - [ ] Islands with auto repair and auto commerce. (Just need to go from island to island to be repaired and earn money)
+    - [ ] Random generation of maps
 - [ ] Silly NPC boats (Follow player in a range)
+    - [ ] Simple AI/Pathfinding
+
 - [ ] Presentation/Explanation of the game and code
+- [ ] Profiling and Optimization
+    - [ ] Save snapshots of the captures overtime
 
 ## Should-Have
 - [ ] Choose what goods to sell and buy from and UI. 
