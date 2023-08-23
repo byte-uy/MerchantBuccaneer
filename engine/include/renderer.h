@@ -1,3 +1,6 @@
+#ifndef MBENGINE_RENDERER
+#define MBENGINE_RENDERER
+
 namespace MBEngine
 {
     class Renderer
@@ -5,4 +8,6 @@ namespace MBEngine
         public:
             static int render();
     };
-} // namespace MBEngine
+} 
+
+#endif 

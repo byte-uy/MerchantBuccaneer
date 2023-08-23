@@ -1,5 +1,5 @@
-#ifndef CCRAFT_INTRINSICS
-#define CCRAFT_INTRINSICS
+#ifndef MBENGINE_INTRINSICS
+#define MBENGINE_INTRINSICS
 
 #if defined(__x86_64__) || defined(_M_X64)
 #   ifdef _MSC_VER
@@ -9,18 +9,17 @@
 #   endif
 #endif
 
-namespace CCraft{
+namespace MBEngine{
 
-inline unsigned long long readTimeStampCounter()
-{
-#if defined(__x86_64__) || defined(_M_X64)
-    return __rdtsc();
-#else
-    // Not yet implemented
-    return -1;
-#endif
+    inline unsigned long long readTimeStampCounter()
+    {
+    #if defined(__x86_64__) || defined(_M_X64)
+        return __rdtsc();
+    #else
+        // Not yet implemented
+        return -1;
+    #endif
+    }
+
 }
-
-}
-
-#endif //__CCRAFT_INTRINSICS
+#endif 

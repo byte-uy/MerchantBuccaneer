@@ -24,6 +24,7 @@ include_directories(
     "external/GL/include"
     "external/glfw/include"
     "external/stb_image/include"
+    "external/tracy/tracy"
 )
 
 # Debug flags
@@ -43,13 +44,13 @@ file(GLOB EXTERNAL_SOURCES "external/*.cpp")
 
 # Add instrumented flags and source files
 if(INSTRUMENTED)
-    add_compile_definitions("INSTRUMENTED_BENCHMARK" "TRACY_ENABLE")
+    add_compile_definitions("INSTRUMENTED_BENCHMARK")
     include_directories("external/tracy/tracy")
     list(APPEND EXTERNAL_SOURCES "external/tracy/TracyClient.cpp")
 endif()
 
 if(TESTS AND INSTRUMENTED)
-    # add_compile_definitions("TRACY_NO_EXIT")
+    add_compile_definitions("TRACY_NO_EXIT")
 endif()
 
 # Now set the target-specific compile options for your internal sources only
@@ -71,16 +72,24 @@ link_directories(
 add_compile_definitions("GLEW_BUILD")
 
 add_library(MBEngine ${SOURCES} ${EXTERNAL_SOURCES})
-target_link_libraries(MBEngine assimp-vc143-mt glfw3 glew32 opengl32)
+find_library(ASSIMP_LIBRARY NAMES assimp-vc143-mt PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../engine/external/assimp/lib")
+find_library(GLFW3_LIBRARY NAMES glfw3 PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../engine/external/glfw/lib")
+find_library(GLEW32_LIBRARY NAMES glew32 PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../engine/external/GL/lib")
+
+target_link_libraries(MBEngine     
+    ${ASSIMP_LIBRARY}
+    ${GLFW3_LIBRARY}
+    ${GLEW32_LIBRARY}
+    opengl32)
 
 add_custom_command(TARGET MBEngine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy 
-        ${CMAKE_SOURCE_DIR}/external/GL/dll/glew32.dll
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/GL/dll/glew32.dll
         ${CMAKE_CURRENT_BINARY_DIR}/glew32.dll)
 
 add_custom_command(TARGET MBEngine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy 
-        ${CMAKE_SOURCE_DIR}/external/assimp/dll/assimp-vc143-mt.dll
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/assimp/dll/assimp-vc143-mt.dll
         ${CMAKE_CURRENT_BINARY_DIR}/assimp-vc143-mt.dll)
 
 if(TESTS)

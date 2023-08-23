@@ -1,2 +1,2 @@
 @echo off
-.\build\MerchantBuccaneer.exe
+.\game\build\MerchantBuccaneer.exe
