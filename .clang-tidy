@@ -1,9 +1,0 @@
-Checks: >
-  -*,
-  bugprone-*,
-  performance-*,
-  readability-*
-
-FormatStyle: "google"
-
-WarningsAsErrors: '*'

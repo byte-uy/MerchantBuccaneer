@@ -1,5 +1,6 @@
 # Task Managment / Issue tracker
 ## Must-Have
+- [ ] Separate core and game
 - [ ] Plane water
     - [ ] Create renderer
     - [ ] Create simple logging functions
