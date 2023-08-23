@@ -23,5 +23,6 @@
 - [ ] Realistic water physics
 - [ ] Random events that affect environment and economy (tornados, etc)
 - [ ] Story and dialogs
+- [ ] Sound effects and music
 
 ## Unproritized
