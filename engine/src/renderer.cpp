@@ -1,5 +1,9 @@
 #include "renderer.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wlanguage-extension-token"
 #include "glew.h"
+#pragma clang diagnostic pop
 #include <GL/GLU.h>
 #include <iostream>
 
@@ -37,8 +41,6 @@ int MBEngine::Renderer::render()
     glViewport(0, 0, mode->width, mode->height);
     while (!static_cast<bool>(glfwWindowShouldClose(window)))
     {
-        std::cout << "While" << std::endl;
-
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
