@@ -32,11 +32,11 @@ int MBEngine::Renderer::render()
     }
 
     glfwMakeContextCurrent(window);
-    if (glewInit() != GLEW_OK)
+    /*if (glewInit() != GLEW_OK)
     {
         std::cout << "Faild to init glew" << std::endl;
         return -1;
-    }
+    }*/
 
     glViewport(0, 0, mode->width, mode->height);
     while (!static_cast<bool>(glfwWindowShouldClose(window)))

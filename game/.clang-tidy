@@ -2,7 +2,13 @@ Checks: >
   -*,
   bugprone-*,
   performance-*,
-  readability-*
+  readability-*,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  hicpp-*,
+  google-*
 
 FormatStyle: "google"
 
