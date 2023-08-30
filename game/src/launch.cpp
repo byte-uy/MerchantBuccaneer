@@ -1,9 +1,11 @@
-#include "benchmark.h"
-#include "renderer.h"
+#include "Benchmark.h"
+#include "Renderer.h"
+#include "external/GLRenderer.h"
 
 int main()
 {
     SCOPED_BENCHMARK(main);
-  
-    return MBEngine::Renderer::render();
+    MBEngine::Renderer renderer(new MBEngine::GLRenderer());
+    renderer.render();
+    return 0;
 }

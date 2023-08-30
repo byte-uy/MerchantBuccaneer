@@ -19,6 +19,7 @@ endif()
 # Include directories
 include_directories(
     "include" 
+    "include/external"
     "external/assimp/include" 
     "external/catch/include"
     "external/GL/include"
@@ -37,7 +38,7 @@ add_compile_definitions("$<$<CONFIG:DEBUG>:MT_DEBUG>")
 add_compile_definitions("$<$<CONFIG:RELEASE>:RELEASE_MODE>")
 
 # Source files
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB SOURCES "src/*.cpp" "src/external/*.cpp")
 
 # External sources
 file(GLOB EXTERNAL_SOURCES "external/*.cpp")
@@ -57,9 +58,9 @@ endif()
 set_property(SOURCE ${SOURCES} PROPERTY COMPILE_OPTIONS -Wall -Werror)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-set_property(SOURCE ${SOURCES} PROPERTY COMPILE_OPTIONS -Wextra -Wpedantic)
+    set_property(SOURCE ${SOURCES} PROPERTY COMPILE_OPTIONS -Wextra -Wpedantic)
 elseif(MSVC)
-target_compile_options(MBEngine PRIVATE /W4 /WX)
+    target_compile_options(MBEngine PRIVATE /W4 /WX)
 endif()
 
 # Add external libs
@@ -97,7 +98,11 @@ if(TESTS)
     target_link_libraries(MBEngineTests PRIVATE MBEngine)
     add_executable(MBEngineBenchmark "tests/benchmark_test.cpp")
     target_link_libraries(MBEngineBenchmark PRIVATE MBEngine)
+    add_executable(MBRenderingTest "tests/rendering_test.cpp")
+    target_link_libraries(MBRenderingTest PRIVATE MBEngine)
+
     enable_testing(true)
+    
     add_test(NAME TestingTest COMMAND MBEngineTests)
     add_test(NAME BenchmarkTest COMMAND MBEngineBenchmark)
 endif()

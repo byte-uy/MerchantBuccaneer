@@ -1,4 +1,4 @@
-#include "benchmark.h"
+#include "Benchmark.h"
 #include <iostream>
 
 void stressTestName()
