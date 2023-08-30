@@ -1,5 +1,4 @@
-#ifndef MBENGINE_INTRINSICS
-#define MBENGINE_INTRINSICS
+#pragma once
 
 #if defined(__x86_64__) || defined(_M_X64)
 #   ifdef _MSC_VER
@@ -22,4 +21,3 @@ namespace MBEngine{
     }
 
 }
-#endif 

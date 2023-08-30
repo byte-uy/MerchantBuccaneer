@@ -1,13 +1,17 @@
-#ifndef MBENGINE_RENDERER
-#define MBENGINE_RENDERER
+#pragma once
+
+#include "RendererAPI.h"
 
 namespace MBEngine
 {
     class Renderer
     {
         public:
-            static int render();
+            Renderer(RendererAPI* rendererAPI);
+            ~Renderer();
+
+            void render();
+        private:
+            RendererAPI* rendererAPI_;
     };
 } 
-
-#endif 

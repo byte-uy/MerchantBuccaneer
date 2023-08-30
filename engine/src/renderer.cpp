@@ -1,32 +1,22 @@
-#include "renderer.h"
-#include "window.h"
+#include "Renderer.h"
+#include "RendererAPI.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wlanguage-extension-token"
-#include "glew.h"
-#pragma clang diagnostic pop
-#include <GL/GLU.h>
-#include <iostream>
-
-#include "glfw3.h"
-
-int MBEngine::Renderer::render()
+namespace MBEngine 
 {
-    
-    Window &window = Window::getInstance();
-    
-    if (glewInit() != GLEW_OK)
+    Renderer::Renderer(RendererAPI* rendererAPI) 
+        : rendererAPI_(rendererAPI)
     {
-        std::cout << "Faild to init glew" << std::endl;
-        return -1;
+        rendererAPI_->init();
     }
 
-    glViewport(0, 0, window.getWidth(), window.getHeight());
-    while (!window.shouldClose())
+    Renderer::~Renderer()
     {
-        window.swapBuffers();
-        glfwPollEvents();
+        rendererAPI_->destroy();
     }
 
-    return 0;
-}
+    void Renderer::render()
+    {
+        rendererAPI_->render();
+    }
+
+} // namespace MBEngine

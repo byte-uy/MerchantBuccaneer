@@ -1,5 +1,4 @@
-#ifndef MBENGINE_BENCHMARK
-#define MBENGINE_BENCHMARK
+#pragma once
 
 #if defined(RELEASE_MODE)
 #   define SCOPED_BENCHMARK(name) 
@@ -26,7 +25,5 @@ namespace MBEngine {
         unsigned long long start_time_;
     };
 }
-
-#endif
 
 #endif
