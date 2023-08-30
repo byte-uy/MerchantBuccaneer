@@ -2,14 +2,13 @@
 
 #include "IWindow.h"
 
+#include <memory>
 namespace MBEngine
 {
     class IRenderer
     {
         public:
-            virtual ~IRenderer() = default;
-            virtual void init(IWindow* Window) = 0;
+            virtual void init(std::shared_ptr<IWindow> Window) = 0;
             virtual void render() = 0;
-            virtual void destroy() = 0;
     };
 }

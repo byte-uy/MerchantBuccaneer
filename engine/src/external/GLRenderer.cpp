@@ -11,14 +11,14 @@
 
 namespace MBEngine
 {
-    void GLRenderer::init(IWindow* window) 
+    void GLRenderer::init(std::shared_ptr<IWindow> window) 
     {
         if (glewInit() != GLEW_OK)
         {
             throw std::runtime_error("Failed to init GLEW");
         }
 
-        window_ = std::shared_ptr<GLWindow>(dynamic_cast<GLWindow*>(window));
+        window_ = std::dynamic_pointer_cast<GLWindow>(window);
     }
 
     void GLRenderer::render() 
@@ -31,8 +31,11 @@ namespace MBEngine
         }
     }
 
-    void GLRenderer::destroy() 
+    std::shared_ptr<GLRenderer> GLRenderer::create(const std::shared_ptr<GLWindow>& window)
     {
-        glfwTerminate();
+        auto renderer = std::make_shared<GLRenderer>();
+        renderer->init(window);
+        return renderer;
     }
+
 }  // namespace MBEngine

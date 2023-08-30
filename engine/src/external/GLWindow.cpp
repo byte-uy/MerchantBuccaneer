@@ -43,8 +43,15 @@ namespace MBEngine
 
     void GLWindow::destroy()
     {
-        glfwDestroyWindow(window_->window_);
+        glfwTerminate();
         delete window_;
+    }
+
+    std::shared_ptr<GLWindow> GLWindow::create() 
+    {
+        auto window = std::make_shared<GLWindow>();
+        window->init();
+        return window;
     }
 
     void GLWindow::swapBuffers()

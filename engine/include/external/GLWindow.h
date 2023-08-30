@@ -3,6 +3,7 @@
 #include "IWindow.h"
 
 #include "gsl.h"
+#include <memory>
 
 namespace MBEngine
 {
@@ -16,8 +17,10 @@ namespace MBEngine
             
             void init() override;
             void destroy() override;
-        private:
 
+            static std::shared_ptr<GLWindow> create();
+
+        private:
             gsl::owner<GLWindowImpl*> window_;
     };
 } // namespace MBEngine
