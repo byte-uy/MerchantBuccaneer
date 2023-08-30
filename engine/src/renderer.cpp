@@ -1,22 +1,22 @@
 #include "Renderer.h"
-#include "RendererAPI.h"
+#include "IRenderer.h"
 
 namespace MBEngine 
 {
-    Renderer::Renderer(RendererAPI* rendererAPI) 
-        : rendererAPI_(rendererAPI)
+    Renderer::Renderer(IRenderer* renderer, IWindow* window) 
+        : renderer_(renderer)
     {
-        rendererAPI_->init();
+        renderer_->init(window);
     }
 
     Renderer::~Renderer()
     {
-        rendererAPI_->destroy();
+        renderer_->destroy();
     }
 
     void Renderer::render()
     {
-        rendererAPI_->render();
+        renderer_->render();
     }
 
 } // namespace MBEngine

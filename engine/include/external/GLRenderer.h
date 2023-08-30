@@ -1,6 +1,7 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "IRenderer.h"
+#include "GLWindow.h"
 
 #include <memory>
 
@@ -8,15 +9,13 @@
 
 namespace MBEngine
 {
-    class GLWindow;
-
-    class GLRenderer : public RendererAPI
+    class GLRenderer : public IRenderer
     {
         public:
-            void init() override;
+            void init(IWindow* window) override;
             void render() override;
             void destroy() override;
         private:
-            gsl::owner<GLWindow*> window_;
+            std::shared_ptr<GLWindow> window_;
     };
 }

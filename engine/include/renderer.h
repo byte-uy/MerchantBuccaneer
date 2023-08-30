@@ -1,17 +1,18 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "IRenderer.h"
+#include "IWindow.h"
 
 namespace MBEngine
 {
     class Renderer
     {
         public:
-            Renderer(RendererAPI* rendererAPI);
+            Renderer(IRenderer* renderer, IWindow* window);
             ~Renderer();
 
             void render();
         private:
-            RendererAPI* rendererAPI_;
+            IRenderer* renderer_;
     };
 } 
