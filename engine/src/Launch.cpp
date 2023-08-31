@@ -21,6 +21,9 @@ namespace MBEngine
         while (!window_->shouldClose())
         {
             window_->processInput();
+
+            renderer_->render();
+
             window_->swapBuffers();
         }
     }
