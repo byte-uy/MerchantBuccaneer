@@ -14,7 +14,8 @@ namespace MBEngine
         public: 
             bool shouldClose() override;
             void swapBuffers() override;
-            
+            void processInput() override;
+
             void init() override;
             void destroy() override;
 

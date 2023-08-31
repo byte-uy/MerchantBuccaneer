@@ -1,6 +1,7 @@
 #include "Benchmark.h"
 #include "Renderer.h"
 #include "external/GLRenderer.h"
+#include "Launch.h"
 
 int main()
 {
