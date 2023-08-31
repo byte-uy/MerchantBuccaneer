@@ -11,30 +11,29 @@
 
 namespace MBEngine
 {
-    void GLRenderer::init(std::shared_ptr<IWindow> window) 
+    void GLRenderer::init() 
     {
         if (glewInit() != GLEW_OK)
         {
             throw std::runtime_error("Failed to init GLEW");
         }
 
-        window_ = std::dynamic_pointer_cast<GLWindow>(window);
     }
 
     void GLRenderer::render() 
     {
-        glViewport(0, 0, window_->getWidth(), window_->getHeight());
-        while (!window_->shouldClose())
-        {
-            window_->swapBuffers();
-            glfwPollEvents();
-        }
+        static const float GL_BACKGROUND_RED = 0.2F;
+        static const float GL_BACKGROUND_GREEN = 0.3F;
+        static const float GL_BACKGROUND_BLUE = 0.3F;
+        static const float GL_BACKGROUND_ALPHA = 1.0F;
+        glClearColor(GL_BACKGROUND_RED, GL_BACKGROUND_GREEN, GL_BACKGROUND_BLUE, GL_BACKGROUND_ALPHA);
+        glClear(GL_COLOR_BUFFER_BIT);
     }
 
-    std::shared_ptr<GLRenderer> GLRenderer::create(const std::shared_ptr<GLWindow>& window)
+    std::shared_ptr<GLRenderer> GLRenderer::create()
     {
         auto renderer = std::make_shared<GLRenderer>();
-        renderer->init(window);
+        renderer->init();
         return renderer;
     }
 

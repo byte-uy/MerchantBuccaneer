@@ -8,7 +8,7 @@ namespace MBEngine
     class IRenderer
     {
         public:
-            virtual void init(std::shared_ptr<IWindow> Window) = 0;
+            virtual void init() = 0;
             virtual void render() = 0;
     };
 }
