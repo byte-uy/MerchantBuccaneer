@@ -19,6 +19,8 @@ endif()
 # Include directories
 include_directories(
     "include" 
+    "include/core"
+    "include/rendering"
     "include/external"
     "external/assimp/include" 
     "external/catch/include"
@@ -38,7 +40,7 @@ add_compile_definitions("$<$<CONFIG:DEBUG>:MT_DEBUG>")
 add_compile_definitions("$<$<CONFIG:RELEASE>:RELEASE_MODE>")
 
 # Source files
-file(GLOB SOURCES "src/*.cpp" "src/external/*.cpp")
+file(GLOB SOURCES "src/*.cpp" "src/*/*.cpp")
 
 # External sources
 file(GLOB EXTERNAL_SOURCES "external/*.cpp")
