@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MBEngine
+namespace MBEngine::core
 {
     class IWindow
     {
@@ -12,4 +12,4 @@ namespace MBEngine
             virtual void init() = 0;
             virtual void destroy() = 0;
     };
-} // namespace MBEngine
+} // namespace MBEngine::core

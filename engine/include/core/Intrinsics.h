@@ -8,8 +8,7 @@
 #   endif
 #endif
 
-namespace MBEngine{
-
+namespace MBEngine::core {
     inline unsigned long long readTimeStampCounter()
     {
     #if defined(__x86_64__) || defined(_M_X64)
@@ -20,5 +19,5 @@ namespace MBEngine{
     #endif
     }
 
-}
+} // namespace MBEngine::core
 

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MBEngine
+namespace MBEngine::core
 {
     static const char* GAME_TITLE = "Merchant Buccaneer";
     static const float BACKGROUND_RED = 0.2F;
@@ -8,4 +8,4 @@ namespace MBEngine
     static const float BACKGROUND_BLUE = 0.3F;
     static const float BACKGROUND_ALPHA = 1.0F;
      
-}
+} // namespace MBEngine::core

@@ -11,7 +11,7 @@
 
 #include <stdexcept>
 
-namespace MBEngine
+namespace MBEngine::rendering
 {
     void GLRenderer::init() 
     {
@@ -24,7 +24,7 @@ namespace MBEngine
 
     void GLRenderer::render() 
     {
-        glClearColor(BACKGROUND_RED, BACKGROUND_GREEN, BACKGROUND_BLUE, BACKGROUND_ALPHA);
+        glClearColor(core::BACKGROUND_RED, core::BACKGROUND_GREEN, core::BACKGROUND_BLUE, core::BACKGROUND_ALPHA);
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
@@ -35,4 +35,4 @@ namespace MBEngine
         return renderer;
     }
 
-}  // namespace MBEngine
+}  // namespace MBEngine::rendering	

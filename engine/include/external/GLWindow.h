@@ -5,7 +5,7 @@
 #include "gsl.h"
 #include <memory>
 
-namespace MBEngine
+namespace MBEngine::core
 {
     class GLWindowImpl;
 
@@ -24,4 +24,4 @@ namespace MBEngine
         private:
             gsl::owner<GLWindowImpl*> window_;
     };
-} // namespace MBEngine
+} // namespace MBEngine::core

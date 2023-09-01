@@ -7,7 +7,7 @@
 
 #include "gsl.h"
 
-namespace MBEngine
+namespace MBEngine::rendering
 {
     class GLRenderer : public IRenderer
     {
@@ -17,4 +17,4 @@ namespace MBEngine
 
             static std::shared_ptr<GLRenderer> create();
     };
-}
+} // namespace MBEngine::rendering

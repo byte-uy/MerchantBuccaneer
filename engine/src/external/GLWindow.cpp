@@ -5,7 +5,7 @@
 
 #include <stdexcept>
 
-namespace MBEngine
+namespace MBEngine::core
 {
     class GLWindowImpl
     {
@@ -78,4 +78,4 @@ namespace MBEngine
             glfwSetWindowShouldClose(window_->window_, 1);
         }
     }
-} // namespace MBEngine
+} // namespace MBEngine::core

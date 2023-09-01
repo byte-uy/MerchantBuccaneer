@@ -14,7 +14,7 @@
 #   define SCOPED_BENCHMARK(name) MBEngine::Benchmark(#name);
 #   define FRAME_END 
 
-namespace MBEngine {
+namespace MBEngine::core {
     class Benchmark 
     {
     public:
@@ -24,7 +24,7 @@ namespace MBEngine {
         std::string scope_name_;
         unsigned long long start_time_;
     };
-}
+} // namespace MBEngine::core
 
 #endif
 

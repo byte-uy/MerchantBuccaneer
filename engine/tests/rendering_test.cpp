@@ -6,9 +6,9 @@
 
 int main()
 {
-    auto window = MBEngine::GLWindow::create();
-    auto renderer = MBEngine::GLRenderer::create();
-    auto launch = MBEngine::Launch::create(window, renderer);
+    auto window = MBEngine::core::GLWindow::create();
+    auto renderer = MBEngine::rendering::GLRenderer::create();
+    auto launch = MBEngine::core::Launch::create(window, renderer);
 
     launch->tick();
 

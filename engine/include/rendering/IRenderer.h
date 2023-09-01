@@ -3,7 +3,7 @@
 #include "IWindow.h"
 
 #include <memory>
-namespace MBEngine
+namespace MBEngine::rendering
 {
     class IRenderer
     {
@@ -11,4 +11,4 @@ namespace MBEngine
             virtual void init() = 0;
             virtual void render() = 0;
     };
-}
+} // namespace MBEngine::rendering
