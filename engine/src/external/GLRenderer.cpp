@@ -35,4 +35,4 @@ namespace MBEngine::rendering
         return renderer;
     }
 
-}  // namespace MBEngine::rendering	
+}  // namespace MBEngine::rendering
