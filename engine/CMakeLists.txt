@@ -39,8 +39,10 @@ add_compile_definitions("$<$<CONFIG:DEBUG>:MT_DEBUG>")
 # Release flags
 add_compile_definitions("$<$<CONFIG:RELEASE>:RELEASE_MODE>")
 
+add_compile_definitions("GLEW_STATIC")
 # Source files
-file(GLOB SOURCES "src/*.cpp" "src/*/*.cpp")
+file(GLOB SOURCES "src/*.cpp" "src/*/*.cpp" "src/external/glew.c")
+
 
 # External sources
 file(GLOB EXTERNAL_SOURCES "external/*.cpp")
@@ -68,21 +70,16 @@ endif()
 # Add external libs
 link_directories(
     "external/assimp/lib" 
-    "external/GL/lib" 
     "external/glfw/lib" 
 )
-
-add_compile_definitions("GLEW_BUILD")
 
 add_library(MBEngine ${SOURCES} ${EXTERNAL_SOURCES})
 find_library(ASSIMP_LIBRARY NAMES assimp-vc143-mt PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../engine/external/assimp/lib")
 find_library(GLFW3_LIBRARY NAMES glfw3 PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../engine/external/glfw/lib")
-find_library(GLEW32_LIBRARY NAMES glew32 PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../engine/external/GL/lib")
 
 target_link_libraries(MBEngine     
     ${ASSIMP_LIBRARY}
     ${GLFW3_LIBRARY}
-    ${GLEW32_LIBRARY}
     opengl32)
 
 add_custom_command(TARGET MBEngine POST_BUILD
