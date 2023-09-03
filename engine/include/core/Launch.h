@@ -15,7 +15,7 @@ namespace MBEngine::core
 
         static std::shared_ptr<Launch> create(std::shared_ptr<IWindow> window, std::shared_ptr<rendering::IRenderer> renderer);
     private:
-        // TODO: Probably Launch should be the owner of window and renderer, change to unique ptr
+        // TODO(Mati): Probably Launch should be the owner of window and renderer, change to unique ptr
         std::shared_ptr<IWindow> window_;
         std::shared_ptr<rendering::IRenderer> renderer_;
     };

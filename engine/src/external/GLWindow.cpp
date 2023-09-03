@@ -20,7 +20,7 @@ namespace MBEngine::core
 
     void GLWindow::init()
     {
-        if (!static_cast<bool>(glfwInit()))
+        if (glfwInit() == GL_FALSE)
         {
             throw std::runtime_error("Failed to init GLFW");
         }
