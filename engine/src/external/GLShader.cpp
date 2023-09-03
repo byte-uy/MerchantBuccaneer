@@ -20,6 +20,12 @@ namespace MBEngine::rendering
         return *this;
     }
 
+    IShaderBuilder& GLShaderBuilder::addVertexBuffer(std::shared_ptr<VertexBuffer>& buffer)
+    {
+        vertexBuffer_ = buffer;
+        return *this;
+    }
+
     std::unique_ptr<IShader> GLShaderBuilder::build() {
         unsigned int shaderProgramHandler = glCreateProgram();
 
@@ -43,14 +49,21 @@ namespace MBEngine::rendering
             // NOLINTEND
         }
         std::vector<unsigned int> shaderHandlers = {vertexShaderHandler_, fragmentShaderHandler_};
+
+        std::unique_ptr<GLShader> shader = std::make_unique<GLShader>(shaderProgramHandler, shaderHandlers);
+        if (vertexBuffer_)
+        {
+            shader->setVertexBuffer(vertexBuffer_);     
+        }
         reset();
-        return std::make_unique<GLShader>(shaderProgramHandler, shaderHandlers);
+        return shader;
     }
 
     void GLShaderBuilder::reset() 
     {
         vertexShaderHandler_ = 0;
         fragmentShaderHandler_ = 0;
+        vertexBuffer_.reset();
     }
 
     void GLShaderBuilder::compileShader(unsigned int shaderHandler, const core::File& shader) 
@@ -74,12 +87,19 @@ namespace MBEngine::rendering
         }
     }
 
+    void GLShader::use()
+    {
+        glUseProgram(shaderProgramHandler_);
+        vertexBuffer_->bind();
+    }
+
     void GLShader::render() 
     {
-
+        use();
+        glDrawArrays(GL_TRIANGLES, 0, 3);
     }
-    GLShader::~GLShader() 
-    {
+
+    GLShader::~GLShader() {
         for (auto shaderHandler : shaderHandlers_)
         {
             glDeleteShader(shaderHandler);
@@ -87,9 +107,13 @@ namespace MBEngine::rendering
         glDeleteProgram(shaderProgramHandler_);
     }
 
-
     GLShader::GLShader(unsigned int shaderProgramHandler, std::vector<unsigned int> shaderHandlers) 
         : shaderProgramHandler_(shaderProgramHandler), shaderHandlers_(std::move(shaderHandlers))
     {}
+
+    void GLShader::setVertexBuffer(std::shared_ptr<VertexBuffer>& buffer) 
+    {
+        vertexBuffer_ = buffer;
+    }
 
 }  // namespace MBEngine::rendering

@@ -11,7 +11,7 @@
 #   include "intrinsics.h"
 #   include <string>
 
-#   define SCOPED_BENCHMARK(name) MBEngine::Benchmark(#name);
+#   define SCOPED_BENCHMARK(name) MBEngine::core::Benchmark(#name);
 #   define FRAME_END 
 
 namespace MBEngine::core {

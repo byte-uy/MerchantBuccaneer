@@ -22,6 +22,17 @@ namespace MBEngine::rendering
     {
         glClearColor(core::BACKGROUND_RED, core::BACKGROUND_GREEN, core::BACKGROUND_BLUE, core::BACKGROUND_ALPHA);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        for (auto& shader : shaders_)
+        {
+            shader->render();
+        }
+    }
+
+    void GLRenderer::addShader(std::unique_ptr<IShader> shader) 
+    {
+        std::unique_ptr<GLShader> glShader(dynamic_cast<GLShader*>(shader.release()));
+        shaders_.push_back(std::move(glShader));
     }
 
     std::shared_ptr<GLRenderer> GLRenderer::create()

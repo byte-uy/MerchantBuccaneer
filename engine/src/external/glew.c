@@ -31,6 +31,9 @@
 */
 
 
+// External library, I won't lint it
+//NOLINTBEGIN
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wlanguage-extension-token"
 #pragma clang diagnostic ignored "-Wstrict-prototypes"
@@ -28581,3 +28584,4 @@ GLboolean eglewIsSupported (const char* name)
 #endif /* _WIN32 */
 
 #pragma clang diagnostic pop
+//NOLINTEND
